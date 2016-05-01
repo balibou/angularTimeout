@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en" ng-app="timeout">
+<head>
+  <meta charset="utf-8">
+  <title>Timeout</title>
+  <script src="node_modules/angular/angular.js"></script>
+  <script src="controller.js"></script>
+</head>
+<body ng-controller="MainCtrl">
+
+  <p>Places to go:</p>
+
+  <ul>
+    <li ng-repeat="result in list"
+        ng-if="result.drinks.length === result.maxPotentialParticipants && !result.reason.length">
+      {{ result.name }}
+    </li>
+  </ul>
+
+  <p>Places to avoid:</p>
+
+  <ul>
+    <li ng-repeat="result in list" ng-if="result.reason.length">
+      {{ result.name }}
+      <ul>
+        <li ng-repeat="reasonWhy in result.reason">
+          {{ reasonWhy }}
+        </li>
+      </ul>
+    </li>
+  </ul>
+
+</body>
+</html>
